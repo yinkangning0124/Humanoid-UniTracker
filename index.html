@@ -1,14 +1,414 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Humanoid UniTracker</title>
-  <style>
-    body { font-family: Arial; text-align: center; padding: 50px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FreeMotion: A Unified Framework for Number-free Text-to-Motion Synthesis</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-  <h1>🤖 Humanoid UniTracker</h1>
-  <p>This project is hosted on GitHub Pages!</p>
-  <!-- 后续可添加更多内容 -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">UniTracker: Learning Universal Whole-Body Motion Tracker for
+Humanoid Robots</h1>
+          <!-- <div class="is-size-3 publication-authors">
+            UnderReview
+          </div> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https:yinkangning0124.github.io">Kangning Yin</a><sup>1,4*</sup>,</span>
+            <span class="author-block">
+              <a href="">Weishuai Zeng</a><sup>2,4*</sup>,</span>
+            <span class="author-block">
+              <a href="https://vankouf.github.io/">Ke Fan</a><sup>1,4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Zirui Wang</a><sup>3,4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/jonyzhang2023">Qiang Zhang</a><sup>5</sup>,
+            </span>
+            <br/>
+            <span class="author-block">
+              <a href="https://sca.shanghaitech.edu.cn/sca_en/2020/0903/c7933a173623/page.htm">Zheng Tian</a><sup>6</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://oceanpang.github.io/">Jiangmiao Pang</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://wnzhang.net/">Weinan Zhang</a><sup>1,4</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Shanghai Jiao Tong University<sup>1</sup>, Peking University<sup>2</sup>, Zhejiang University<sup>3</sup>,<br/>
+            Shanghai Artificial Intelligence Laboratory<sup>4</sup>,<br/> The Hong Kong University of Science and Technology (Guangzhou)<sup>5</sup>,
+          ShanghaiTech University<sup>6</sup></span>,
+            <!-- <span class="author-block"><sup>2</sup>Google Research</span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2405.15763"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/VankouF/FreeMotion-Codes.git"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1ZtNZuctaIXMrxlWuQZS2eZhT0U6kAMoQ/view?usp=sharing" 
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-database"></i>
+                </span>
+                <span>Data</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    
+        <!-- <center><h2 class="title is-3">Abstract</h2></center> -->
+    
+    <div class="hero-body has-text-centered">
+        <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/video/demo_teaser.mp4" type="video/mp4">
+        </video>
+    <!-- <div class="hero-body has-text-centered"> -->
+        <!-- <img src = "./static/images/teaser.png" height="80%"></img><br> -->
+    </div>
+    
+    <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+      Humanoid robots require expressive and generalizable whole-body motion control to operate effectively in human-centric environments. 
+      Prior work often relies on teacher-student frameworks to distill policies under partial observations, 
+      but struggles to retain motion diversity during deployment. 
+      In this work, we propose a simplified yet effective pipeline that leverages a Conditional Variational Autoencoder (CVAE) within a teacher-student framework to preserve motion expressiveness and enable strong generalization. 
+      Unlike previous methods that rely purely on MLP-based DAgger to transfer information from the teacher, 
+      we leverage a CVAE prior to model motion diversity, 
+      allowing the student to preserve and generalize expressive behaviors, 
+      resulting in a single policy capable of tracking a wide range of whole-body motions. 
+      Extensive experiments in both simulation and real-world settings demonstrate that our approach significantly improves generalization across diverse motion types and unseen references, 
+      making it a practical solution for expressive whole-body humanoid control.
+    </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    <br>
+
+    <!-- <div id="video-container">
+      <video id="video" muted controls playsinline>
+        <source src="./static/video/demo.mp4" type="video/mp4">
+      </video>
+      <span style="font-size:12px">* This video contains audio.</span>
+    </div> -->
+    
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <center><h2 class="title is-3">Kung Fu</h2></center>
+  <div class="hero-body">
+
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Kung_Fu/boxing.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Kung_Fu/Bruce_Lee.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Kung_Fu/horse_punch.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Kung_Fu/front_kick.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Kung_Fu/kick.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- <div class="column is-centered has-text-centered">
+          <p><b> A person walks with a limp, their left leg gets injured.</b></p>
+          <br>
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/gallery/4.mp4" type="video/mp4">
+          </video>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-small is-light">
+  <center><h2 class="title is-3">Dance</h2></center>
+  <div class="hero-body">
+
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Dance/dance1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Dance/misc.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Dance/Charles.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Dance/waltz.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <center><h2 class="title is-3">Others motions like walk, run, jump, stretch</h2></center>
+  <div class="hero-body">
+
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Common/circle_walk.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Common/run.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Common/stretch.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Common/jump.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Common/walk.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <center><h2 class="title is-3">Downstream Applications</h2></center><br>
+    <!-- <p>
+      We showcase MoMask's capability to inpaint specific regions within existing motion clips, conditioned on a textual description. Here, we present the inpainting results for the middle, suffix, and prefix regions of motion clips. The input motion clips are highlighted in <span style="color:purple;">purple</span>, and the synthesized content is represented in <span style="color:#76D7C4;">cyan</span>.
+    </p>
+    <br> -->
+    <h3 class="title is-4">1. Text-to-Motion Generation</h2>
+    <!-- (<span style="color:purple;">Purple</span>=Input, <span style="color:#76D7C4;">Cyan</span>=Synthesis) -->
+    <br>
+    <div class="columns is-centered">
+      <div class="column">
+        <div id="video-container">
+          <center><p>"A person is punching forward.
+            "</p></center>
+          <video id="video" controls muted loop playsinline height="40%">
+              <source src="./static/video/t2m/punch.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <center><p>"A person is squating down.
+            "</p></center>
+          <video poster="" id="push" controls muted loop playsinline height="40%">
+              <source src="./static/video/t2m/squat.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <center><p>"A person is dancing the waltz.
+            "</p></center>
+          <video poster="" id="push" controls muted loop playsinline height="40%">
+              <source src="./static/video/t2m/waltz.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+    
+    </div>
+
+    <h3 class="title is-4">2. Video-based Estimation</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video poster="" id="standing" controls muted loop playsinline height="40%">
+              <source src="./static/video/video_estimation/person.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video poster="" id="warmup" controls muted loop playsinline height="40%">
+              <source src="./static/video/video_estimation/g1.mp4"
+                      type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+<section class="section is-light is-small">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3">Approach Overview</h2></center>
+    <div class="hero-body">
+      <a href="./static/images/model.png"><img src = "./static/images/model.png" height="100%"></img></href></a><br>
+    </div>
+  </div>
+    <!--/ Abstract. -->
+
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>place_holder
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+        <p>
+          This website is licensed under a <a rel="license"
+          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+      <p>
+        Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. If you want to reuse their <a
+        href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</footer>
+
+<script>
+      var videoContainer = document.getElementById('video-container');
+      var video = document.getElementById('video');
+
+      var videoOffset = videoContainer.offsetTop;
+
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY || window.pageYOffset;
+
+        if (scrollPosition >= videoOffset) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    </script>
+
 </body>
 </html>
