@@ -51,14 +51,14 @@ Humanoid Robots</h1>
           </div> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https:yinkangning0124.github.io">Kangning Yin</a><sup>1,4*</sup>,</span>
+              <a href="https:yinkangning0124.github.io">Kangning Yin</a><sup>1,2*</sup>,</span>
             <span class="author-block">
-              <a href="">Weishuai Zeng</a><sup>2,4*</sup>,</span>
+              <a href="">Weishuai Zeng</a><sup>2,3*</sup>,</span>
             <span class="author-block">
-              <a href="https://vankouf.github.io/">Ke Fan</a><sup>1,4</sup>,
+              <a href="https://vankouf.github.io/">Ke Fan</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="">Zirui Wang</a><sup>3,4</sup>,
+              <a href="">Zirui Wang</a><sup>2,4</sup>,
             </span>
             <span class="author-block">
               <a href="https://github.com/jonyzhang2023">Qiang Zhang</a><sup>5</sup>,
@@ -68,20 +68,20 @@ Humanoid Robots</h1>
               <a href="https://sca.shanghaitech.edu.cn/sca_en/2020/0903/c7933a173623/page.htm">Zheng Tian</a><sup>6</sup>,
             </span>
             <span class="author-block">
-              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>4</sup>,
+              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://oceanpang.github.io/">Jiangmiao Pang</a><sup>4</sup>,
+              <a href="https://oceanpang.github.io/">Jiangmiao Pang</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://wnzhang.net/">Weinan Zhang</a><sup>1,4</sup>,
+              <a href="https://wnzhang.net/">Weinan Zhang</a><sup>1,2</sup>,
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Shanghai Jiao Tong University<sup>1</sup>, Peking University<sup>2</sup>, Zhejiang University<sup>3</sup>,<br/>
-            Shanghai Artificial Intelligence Laboratory<sup>4</sup>,<br/> The Hong Kong University of Science and Technology (Guangzhou)<sup>5</sup>,
-          ShanghaiTech University<sup>6</sup></span>,
+            <span class="author-block">Shanghai Jiao Tong University<sup>1</sup>, Shanghai Artificial Intelligence Laboratory<sup>2</sup>, <br/> Peking University<sup>3</sup>, Zhejiang University<sup>4</sup>,<br/>
+             The Hong Kong University of Science and Technology (Guangzhou)<sup>5</sup>,
+          ShanghaiTech University<sup>6</sup></span>
             <!-- <span class="author-block"><sup>2</sup>Google Research</span> -->
           </div>
 
@@ -123,7 +123,7 @@ Humanoid Robots</h1>
     
     <div class="hero-body has-text-centered">
         <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/video/demo_teaser.mp4" type="video/mp4">
+          <source src="./static/video/teaser/demo_teaser_new.mp4" type="video/mp4">
         </video>
     <!-- <div class="hero-body has-text-centered"> -->
         <!-- <img src = "./static/images/teaser.png" height="80%"></img><br> -->
@@ -136,16 +136,15 @@ Humanoid Robots</h1>
         <h2 class="title is-2">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-      Humanoid robots require expressive and generalizable whole-body motion control to operate effectively in human-centric environments. 
-      Prior work often relies on teacher-student frameworks to distill policies under partial observations, 
-      but struggles to retain motion diversity during deployment. 
-      In this work, we propose a simplified yet effective pipeline that leverages a Conditional Variational Autoencoder (CVAE) within a teacher-student framework to preserve motion expressiveness and enable strong generalization. 
-      Unlike previous methods that rely purely on MLP-based DAgger to transfer information from the teacher, 
-      we leverage a CVAE prior to model motion diversity, 
-      allowing the student to preserve and generalize expressive behaviors, 
-      resulting in a single policy capable of tracking a wide range of whole-body motions. 
-      Extensive experiments in both simulation and real-world settings demonstrate that our approach significantly improves generalization across diverse motion types and unseen references, 
-      making it a practical solution for expressive whole-body humanoid control.
+      Achieving expressive and generalizable whole-body motion control is essential for deploying humanoid robots in real-world environments. 
+      In this work, we propose UniTracker, a three-stage training framework that enables robust and scalable motion tracking across a wide range of human behaviors. 
+      In the first stage, we train a teacher policy with privileged observations to generate high-quality actions. 
+      In the second stage, we introduce a Conditional Variational Autoencoder (CVAE) to model a universal student policy that can be deployed directly on real hardware. 
+      The CVAE structure allows the policy to learn a global latent representation of motion, enhancing generalization to unseen behaviors and addressing the limitations of standard MLP-based policies under partial observations. 
+      Unlike pure MLPs that suffer from drift in global attributes like orientation, our CVAE-student policy incorporates global intent during training by aligning a partial-observation prior to the full-observation encoder. 
+      In the third stage, we introduce a fast adaptation module that fine-tunes the universal policy on harder motion sequences that are difficult to track directly. 
+      This adaptation can be performed both for single sequences and in batch mode, further showcasing the flexibility and scalability of our approach. 
+      We evaluate UniTracker in both simulation and real-world settings using a Unitree G1 humanoid, demonstrating strong performance in motion diversity, tracking accuracy, and deployment robustness.
     </p>
         </div>
       </div>
@@ -181,6 +180,18 @@ Humanoid Robots</h1>
           </video>
         </div>
         
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Kung_Fu/highkick.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Kung_Fu/punchboxing_kick.mp4" type="video/mp4">
+          </video>
+        </div>
+
         <div class="column is-centered has-text-centered">
           <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
             <source src="./static/video/Kung_Fu/front_kick.mp4" type="video/mp4">
@@ -255,6 +266,12 @@ Humanoid Robots</h1>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="column is-centered has-text-centered">
           <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/Common/crab_walk.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
             <source src="./static/video/Common/walk.mp4" type="video/mp4">
           </video>
         </div>
@@ -277,6 +294,44 @@ Humanoid Robots</h1>
         <div class="column is-centered has-text-centered">
           <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
             <source src="./static/video/Common/jump.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <center><h2 class="title is-3">Challenging motions by fast adaption</h2></center>
+  <div class="hero-body">
+
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/fast_adaption/martial_art.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/fast_adaption/RoundKick.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/fast_adaption/sidekick.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/fast_adaption/backkick.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column is-centered has-text-centered">
+          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/video/fast_adaption/superquick_punch.mp4" type="video/mp4">
           </video>
         </div>
         
@@ -343,7 +398,7 @@ Humanoid Robots</h1>
       <div class="column">
         <div class="content">
           <video poster="" id="warmup" controls muted loop playsinline height="40%">
-              <source src="./static/video/video_estimation/g1.mp4"
+              <source src="./static/video/video_estimation/video_est.mp4"
                       type="video/mp4">
             </video>
         </div>
