@@ -51,21 +51,24 @@ Humanoid Robots</h1>
           </div> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https:yinkangning0124.github.io">Kangning Yin</a><sup>1,2*</sup>,</span>
+              <a href="https:yinkangning0124.github.io">Kangning Yin</a><sup>1,2,3*</sup>,</span>
             <span class="author-block">
-              <a href="">Weishuai Zeng</a><sup>2,3*</sup>,</span>
+              <a href="">Weishuai Zeng</a><sup>2,4*</sup>,</span>
             <span class="author-block">
               <a href="https://vankouf.github.io/">Ke Fan</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="">Zirui Wang</a><sup>2,4</sup>,
+              <a href="https://jixiii.github.io/">Minyue Dai</a><sup>2,6</sup>,
             </span>
             <span class="author-block">
-              <a href="https://github.com/jonyzhang2023">Qiang Zhang</a><sup>5</sup>,
+              <a href="">Zirui Wang</a><sup>2,3,5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/jonyzhang2023">Qiang Zhang</a><sup>7</sup>,
             </span>
             <br/>
             <span class="author-block">
-              <a href="https://sca.shanghaitech.edu.cn/sca_en/2020/0903/c7933a173623/page.htm">Zheng Tian</a><sup>6</sup>,
+              <a href="https://sca.shanghaitech.edu.cn/sca_en/2020/0903/c7933a173623/page.htm">Zheng Tian</a><sup>8</sup>,
             </span>
             <span class="author-block">
               <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>2</sup>,
@@ -74,14 +77,14 @@ Humanoid Robots</h1>
               <a href="https://oceanpang.github.io/">Jiangmiao Pang</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://wnzhang.net/">Weinan Zhang</a><sup>1,2</sup>,
+              <a href="https://wnzhang.net/">Weinan Zhang</a><sup>1,2,3</sup>,
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Shanghai Jiao Tong University<sup>1</sup>, Shanghai Artificial Intelligence Laboratory<sup>2</sup>, <br/> Peking University<sup>3</sup>, Zhejiang University<sup>4</sup>,<br/>
-             The Hong Kong University of Science and Technology (Guangzhou)<sup>5</sup>,
-          ShanghaiTech University<sup>6</sup></span>
+            <span class="author-block">Shanghai Jiao Tong University<sup>1</sup>, Shanghai Artificial Intelligence Laboratory<sup>2</sup>, Shanghai Innovation Institute<sup>3</sup>, <br/> Peking University<sup>4</sup>, Zhejiang University<sup>5</sup>, Fudan University<sup>6</sup>,<br/>
+             The Hong Kong University of Science and Technology (Guangzhou)<sup>7</sup>,
+          ShanghaiTech University<sup>8</sup></span>
             <!-- <span class="author-block"><sup>2</sup>Google Research</span> -->
           </div>
 
@@ -123,7 +126,7 @@ Humanoid Robots</h1>
     
     <div class="hero-body has-text-centered">
         <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-          <source src="./static/video/teaser/demo_teaser_new.mov" type="video/mp4">
+          <source src="./static/video/teaser/ICRA_final_video.mp4" type="video/mp4">
         </video>
     <!-- <div class="hero-body has-text-centered"> -->
         <!-- <img src = "./static/images/teaser.png" height="80%"></img><br> -->
@@ -136,15 +139,9 @@ Humanoid Robots</h1>
         <h2 class="title is-2">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-      Achieving expressive and generalizable whole-body motion control is essential for deploying humanoid robots in real-world environments. 
-      In this work, we propose UniTracker, a three-stage training framework that enables robust and scalable motion tracking across a wide range of human behaviors. 
-      In the first stage, we train a teacher policy with privileged observations to generate high-quality actions. 
-      In the second stage, we introduce a Conditional Variational Autoencoder (CVAE) to model a universal student policy that can be deployed directly on real hardware. 
-      The CVAE structure allows the policy to learn a global latent representation of motion, enhancing generalization to unseen behaviors and addressing the limitations of standard MLP-based policies under partial observations. 
-      Unlike pure MLPs that suffer from drift in global attributes like orientation, our CVAE-student policy incorporates global intent during training by aligning a partial-observation prior to the full-observation encoder. 
-      In the third stage, we introduce a fast adaptation module that fine-tunes the universal policy on harder motion sequences that are difficult to track directly. 
-      This adaptation can be performed both for single sequences and in batch mode, further showcasing the flexibility and scalability of our approach. 
-      We evaluate UniTracker in both simulation and real-world settings using a Unitree G1 humanoid, demonstrating strong performance in motion diversity, tracking accuracy, and deployment robustness.
+      Achieving generalizable whole-body motion control is essential for deploying humanoid robots in real-world environments. However, existing MLP-based policies trained under partial observations often suffer from limited expressiveness and struggle to maintain global consistency. These shortcomings manifest as less expressive motion, orientation drift, and poor generalization across diverse behaviors.
+To address these limitations, we propose UniTracker, a three-stage framework for scalable and adaptive motion tracking. The first stage learns a privileged teacher policy that produces high-fidelity reference actions. Building on this, the second stage trains a CVAE-based universal policy that captures a global latent representation of motion, enabling robust performance under partial observations. Crucially, we align the partial-observation prior with a full-observation encoder, injecting global intent into the latent space. In the final stage, a lightweight adaptation module fine-tunes the student policy on challenging sequences, supporting both per-instance and batch adaptation.
+We validate UniTracker in simulation and on a Unitree G1 humanoid robot, demonstrating superior tracking accuracy, motion diversity, and deployment robustness compared to current baselines.
     </p>
         </div>
       </div>
@@ -162,183 +159,320 @@ Humanoid Robots</h1>
   </div>
 </section>
 
-<section class="hero is-small is-light">
-  <center><h2 class="title is-3">Kung Fu</h2></center>
-  <div class="hero-body">
 
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Kung_Fu/Bruce_Lee.mov" type="video/mp4">
+<section class="section" style="padding-top: 0rem;">
+<center><h2 class="title is-3">Long Sequences Driven by a Single Universal Policy</h2></center>
+  <div class="hero-body has-text-centered">
+    
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/video/longseq.mp4"
+                  type="video/mp4">
           </video>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Kung_Fu/horse_punch.mov" type="video/mp4">
+</section>
+<section class="section" style="padding-top: 0rem;">
+    
+  <center><h2 class="title is-3">Robot Behaviors Driven by a Single Universal Policy</h2></center>
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <div class="content has-text-centered">
+              <h2 class="title is-7">high kick</h2>
+          </div>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/video/offline_data/high_kick.mp4"
+                  type="video/mp4">
           </video>
         </div>
-        
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Kung_Fu/highkick.mov" type="video/mp4">
-          </video>
-        </div>
+      </div>
 
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Kung_Fu/punchboxing_kick.mov" type="video/mp4">
-          </video>
-        </div>
+      <div class="column">
+        <div class="content">
+          <div class="content has-text-centered">
+                <h2 class="title is-7">kick the ball</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/kick.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
 
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Kung_Fu/front_kick.mov" type="video/mp4">
+      <div class="column">
+      <div class="content">
+          <div class="content has-text-centered">
+              <h2 class="title is-7">air kick</h2>
+          </div>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/video/offline_data/air_kick.mp4"
+                  type="video/mp4">
           </video>
-        </div>
+      </div>
+      </div>
+      </div>
 
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Kung_Fu/kick.mov" type="video/mp4">
-          </video>
-        </div>
+      <div class="columns is-centered">
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">mma side kick</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/mma_sidekick.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
 
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Kung_Fu/boxing.mov" type="video/mp4">
-          </video>
-        </div>
-        <!-- <div class="column is-centered has-text-centered">
-          <p><b> A person walks with a limp, their left leg gets injured.</b></p>
-          <br>
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/gallery/4.mp4" type="video/mp4">
-          </video>
-        </div> -->
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">punchboxing kick</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/punchboxing_kick.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+      
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">hippop dance</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/hippop_dance.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+    </div>
+  <!---------------------------------------------->
 
+      <div class="columns is-centered">
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">dance in the rain and kick</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/dancing_in_the_rain.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">dance and bend down</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/stagii_dance.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+      
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">club dance</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/dance_and_stand.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+    </div>
+    <!---------------------------------------------->
+
+      <div class="columns is-centered">
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">crouch walk and kick</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/courch_walk_and_kick.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">deep squat</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/deep_squat.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+      
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">lateral slide step</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/side_pop_ood.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+    </div>
+
+    <!---------------------------------------------->
+
+      <div class="columns is-centered">
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">crouch walk and kick</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/courch_walk_and_kick.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">golf</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/golf.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+      
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">crab walk</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/crab_walk.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+    </div>
+
+    <!---------------------------------------------->
+
+      <div class="columns is-centered">
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">circle walk</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/circle_walk.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">run</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/run.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+      
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">stretch</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/offline_data/stretch.mp4"
+                      type="video/mp4">
+              </video>
+          </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="hero is-small is-light">
-  <center><h2 class="title is-3">Dance</h2></center>
-  <div class="hero-body">
-
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Dance/dance1.mov" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Dance/Charles.mov" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Dance/misc.mov" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Dance/waltz.mov" type="video/mp4">
-          </video>
-        </div>
-        
+<section class="section" style="padding-top: 0rem;">
+  <center><h2 class="title is-3">Challenging Motions by Fast Adaption</h2></center>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+    <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">martial art</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/fast_adaption/martial_art.mov"
+                      type="video/mp4">
+              </video>
+          </div>
       </div>
-    </div>
-  </div>
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">Roundhorse Kick</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/fast_adaption/RoundKick.mov"
+                      type="video/mp4">
+              </video>
+          </div>
+      </div>
+      </div>
+      <div class="columns is-centered">
+      <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">side kick</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/fast_adaption/sidekick.mov"
+                      type="video/mp4">
+              </video>
+          </div>
+          </div>
+          <div class="column">
+          <div class="content">
+              <div class="content has-text-centered">
+                  <h2 class="title is-7">back kick</h2>
+              </div>
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/video/fast_adaption/backkick.mov"
+                      type="video/mp4">
+              </video>
+          </div>
+          </div>
+          </div>
+</div>
 </section>
 
-<section class="hero is-small is-light">
-  <center><h2 class="title is-3">Others motions like walk, run, jump, stretch</h2></center>
-  <div class="hero-body">
-
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Common/crab_walk.mov" type="video/mp4">
-          </video>
-        </div>
-        
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Common/walk.mov" type="video/mp4">
-          </video>
-        </div>
-        
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Common/circle_walk.mov" type="video/mp4">
-          </video>
-        </div>
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Common/run.mov" type="video/mp4">
-          </video>
-        </div>
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Common/stretch.mov" type="video/mp4">
-          </video>
-        </div>
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/Common/jump.mov" type="video/mp4">
-          </video>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero is-small is-light">
-  <center><h2 class="title is-3">Challenging motions by fast adaption</h2></center>
-  <div class="hero-body">
-
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/fast_adaption/martial_art.mov" type="video/mp4">
-          </video>
-        </div>
-        
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/fast_adaption/RoundKick.mov" type="video/mp4">
-          </video>
-        </div>
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/fast_adaption/sidekick.mov" type="video/mp4">
-          </video>
-        </div>
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/fast_adaption/backkick.mov" type="video/mp4">
-          </video>
-        </div>
-        <div class="column is-centered has-text-centered">
-          <video poster="" id="tree" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/video/fast_adaption/superquick_punch.mov" type="video/mp4">
-          </video>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="section">
   <div class="container is-max-desktop">
